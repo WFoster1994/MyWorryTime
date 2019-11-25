@@ -4,7 +4,10 @@
     tools:context="will.example.myworrytime.MainActivity">
     <item
         android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:orderInCategory="101"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/current_worries"
+        android:title="Item" />
 </menu>
