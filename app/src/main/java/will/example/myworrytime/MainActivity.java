@@ -3,16 +3,47 @@ package will.example.myworrytime;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //Non-public/static field names start with m. They are a member
+    private ListView mListView;
+    private EditText mEditText;
+    private Button mButton;
+
+    private ArrayList<String> mArrayList;
+    private ArrayAdapter<String> mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mEditText = findViewById(R.id.edit_worry);
+        mButton = findViewById(R.id.add_worry_button);
+        mListView = findViewById(R.id.worries_list_view);
+        /*The ArrayAdapter acts as a controller in this MVC relationship
+          The code looks up the ListView by using the id properties defined
+          in the worry_row and row_text layouts*/
+        /*ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                R.layout.worry_row,
+                R.id.row_text,
+                new String[]{"first record", "second record", "third record"}
+        );
+        mListView.setAdapter(arrayAdapter);*/
+
+        mButton.setOnClickListener(this);
     }
 
     @Override
@@ -35,5 +66,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    /* Once something is typed into the edit text field
+    * it will be saved into the items list */
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.add_worry_button:
+                String textEntered = mEditText.getText().toString();
+                mAdapter.add(textEntered);
+                //Ensure the edit text field reverts to be empty
+                mEditText.setText("");
+
+                Toast.makeText(this, "Worry Added", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
