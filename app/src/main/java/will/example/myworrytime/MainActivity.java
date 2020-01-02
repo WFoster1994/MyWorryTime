@@ -1,9 +1,11 @@
 package will.example.myworrytime;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     //Non-public/static field names start with m. They are a member
     private ListView mListView;
@@ -27,11 +29,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.worry_list);
 
         mEditText = findViewById(R.id.edit_worry);
         mButton = findViewById(R.id.add_worry_button);
         mListView = findViewById(R.id.worries_list_view);
+
+        mArrayList = WorryHelper.readData(this);
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArrayList);
+        mListView.setAdapter(mAdapter);
+
         /*The ArrayAdapter acts as a controller in this MVC relationship
           The code looks up the ListView by using the id properties defined
           in the worry_row and row_text layouts*/
@@ -44,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mListView.setAdapter(arrayAdapter);*/
 
         mButton.setOnClickListener(this);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -79,8 +87,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Ensure the edit text field reverts to be empty
                 mEditText.setText("");
 
+                WorryHelper.writeData(mArrayList, this);
+
                 Toast.makeText(this, "Worry Added", Toast.LENGTH_SHORT).show();
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mArrayList.remove(position);
+        mAdapter.notifyDataSetChanged();
+        Toast.makeText(this, "Worry Deleted", Toast.LENGTH_SHORT).show();
     }
 }
