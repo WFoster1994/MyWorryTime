@@ -16,13 +16,13 @@
         android:layout_marginBottom="16dp"
         android:text="What is on your mind right now"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/launch_list_btn"
+        app:layout_constraintBottom_toTopOf="@+id/launch_list_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/launch_list_btn"
+        android:id="@+id/launch_list_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
