@@ -1,6 +1,5 @@
 package will.example.myworrytime;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,17 +37,6 @@ import java.util.ArrayList;
             mArrayList = WorryHelper.readData(this);
             mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArrayList);
             mListView.setAdapter(mAdapter);
-
-        /*The ArrayAdapter acts as a controller in this MVC relationship
-          The code looks up the ListView by using the id properties defined
-          in the worry_row and row_text layouts*/
-        /*ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this,
-                R.layout.worry_row,
-                R.id.row_text,
-                new String[]{"first record", "second record", "third record"}
-        );
-        mListView.setAdapter(arrayAdapter);*/
 
             mButton.setOnClickListener(this);
             mListView.setOnItemClickListener(this);
