@@ -14,16 +14,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_main);
 
-        Button current_worries_button = (Button) findViewById(R.id.launch_list_button);
-        current_worries_button.setOnClickListener(new View.OnClickListener() {
+        Button currentWorriesButton = findViewById(R.id.launch_list_button);
+        currentWorriesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openWorryActivity();
             }
         });
 
-        Button worry_time_button = (Button) findViewById(R.id.start_worrytime_button);
-        worry_time_button.setOnClickListener(new View.OnClickListener() {
+        Button worryTimeButton = findViewById(R.id.start_worrytime_button);
+        worryTimeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openWorryTime();
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openWorryActivity() {
-        Intent intent = new Intent(this, WorryActivity.class);
+        Intent intent = new Intent(this, WorryListActivity.class);
         startActivity(intent);
     }
 

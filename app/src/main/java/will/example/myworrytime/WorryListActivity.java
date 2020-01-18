@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-    public class WorryActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
+    public class WorryListActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
         //Non-public/static field names start with m. They are a member
         private ListView mListView;
@@ -34,7 +34,7 @@ import java.util.ArrayList;
             mButton = findViewById(R.id.add_worry_button);
             mListView = findViewById(R.id.worries_list_view);
 
-            mArrayList = WorryHelper.readData(this);
+            mArrayList = WorryListHelper.readData(this);
             mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArrayList);
             mListView.setAdapter(mAdapter);
 
@@ -75,7 +75,7 @@ import java.util.ArrayList;
                     //Ensure the edit text field reverts to be empty
                     mEditText.setText("");
 
-                    WorryHelper.writeData(mArrayList, this);
+                    WorryListHelper.writeData(mArrayList, this);
 
                     Toast.makeText(this, "Worry Added", Toast.LENGTH_SHORT).show();
                     break;

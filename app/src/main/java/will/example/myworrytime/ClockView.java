@@ -11,7 +11,11 @@ public class ClockView extends View {
     private float angle;
     private Paint paint;
 
-
+    /*
+    This java class will create the animated clock dial
+    that will appear on screen when the start button is
+    clicked on the WorryTimeActivity view.
+     */
     public ClockView(Context context) {
         super(context);
 
