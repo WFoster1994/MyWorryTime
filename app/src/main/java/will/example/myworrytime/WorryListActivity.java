@@ -35,7 +35,7 @@ import java.util.ArrayList;
             mListView = findViewById(R.id.worries_list_view);
 
             mArrayList = WorryListHelper.readData(this);
-            mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mArrayList);
+            mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArrayList);
             mListView.setAdapter(mAdapter);
 
             mButton.setOnClickListener(this);
@@ -86,6 +86,6 @@ import java.util.ArrayList;
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             mArrayList.remove(position);
             mAdapter.notifyDataSetChanged();
-            Toast.makeText(this, "Worry Deleted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Worry Removed", Toast.LENGTH_SHORT).show();
         }
     }

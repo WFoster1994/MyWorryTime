@@ -1,20 +1,15 @@
 package will.example.myworrytime;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class WorryTimeActivity extends AppCompatActivity {
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
-   private Button startButton;
-   private Button completeButton;
-   private Button cancelButton;
+public class WorryTimeActivity extends AppCompatActivity {
 
     private Thread animationThread;
     private ClockView mClockView;
@@ -24,7 +19,7 @@ public class WorryTimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worry_time);
 
-        startButton = findViewById(R.id.begin_time_button);
+        Button startButton = findViewById(R.id.begin_time_button);
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,11 +27,11 @@ public class WorryTimeActivity extends AppCompatActivity {
             }
         });
 
-        completeButton = findViewById(R.id.complete_time_button);
+        Button completeButton = findViewById(R.id.complete_time_button);
         //Ensure that the user cannot complete immediately.
         completeButton.setEnabled(false);
 
-        cancelButton = findViewById(R.id.cancel_time_button);
+        Button cancelButton = findViewById(R.id.cancel_time_button);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +51,6 @@ public class WorryTimeActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
-
     }
 
 

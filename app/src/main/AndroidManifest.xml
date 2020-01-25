@@ -9,8 +9,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WorryTimeActivity">
-        </activity>
+
         <activity
             android:name=".MainActivity"
             android:icon="@mipmap/ic_launcher"
@@ -30,6 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".WorryListActivity" />
+        <activity android:name=".WorryTimeActivity"/>
+        <activity android:name=".ClockView"/>
     </application>
 
 </manifest>
