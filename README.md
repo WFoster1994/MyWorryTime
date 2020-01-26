@@ -1,5 +1,5 @@
 # MyWorryTime
-CO666 Adv Mobile Application  - Application for coursework
+CO666 Adv Mobile Systems  - Application for coursework
 
 This project is a Cognitive Behavioural Therapy application surrounding the practice of Worry Time. 
 It is the coursework submission for CO666 - Advanced Mobile Development at Bucks New University, CW1.
