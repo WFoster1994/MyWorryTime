@@ -6,6 +6,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
+/*This is a prospective class that is the hopeful
+display for the final app. What is meant by this is
+that an analog clock was intended for the final app
+but difficulties arose and it could not be implemented.
+ */
 public class ClockView extends View {
 
     private float angle;
