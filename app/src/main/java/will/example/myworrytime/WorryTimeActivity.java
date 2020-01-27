@@ -27,7 +27,7 @@ public class WorryTimeActivity extends AppCompatActivity {
 
     private CountDownTimer mCountDownTimer;
 
-    private Boolean mTimerRunning;
+    private boolean mTimerRunning;
 
     private long mTimeLeft = START_TIME;
 
@@ -37,7 +37,7 @@ public class WorryTimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_worry_time);
 
         mCountDownTextView = findViewById(R.id.clockText);
-        mStartPauseButton = findViewById(R.id.begin_time_button);
+        mStartPauseButton = findViewById(R.id.start_pause_button);
         mResetButton = findViewById(R.id.reset_time_button);
 
         mCompleteButton = findViewById(R.id.complete_time_button);
