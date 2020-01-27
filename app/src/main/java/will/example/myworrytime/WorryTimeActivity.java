@@ -36,7 +36,7 @@ public class WorryTimeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worry_time);
 
-        mCountDownTextView = findViewById(R.id.clockText);
+        mCountDownTextView = findViewById(R.id.count_down_text);
         mStartPauseButton = findViewById(R.id.start_pause_button);
         mResetButton = findViewById(R.id.reset_time_button);
 
@@ -99,7 +99,7 @@ public class WorryTimeActivity extends AppCompatActivity {
         mCountDownTimer = new CountDownTimer(mTimeLeft, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                mTimeLeft = mTimeLeft;
+                mTimeLeft = millisUntilFinished;
                 updateCountDown();
             }
 

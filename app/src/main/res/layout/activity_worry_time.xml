@@ -20,7 +20,7 @@
         android:contentDescription="@string/timer_description" />
 
     <TextView
-        android:id="@+id/clockText"
+        android:id="@+id/count_down_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/timer"
