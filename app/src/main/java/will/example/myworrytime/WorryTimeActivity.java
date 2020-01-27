@@ -4,7 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,7 +19,7 @@ public class WorryTimeActivity extends AppCompatActivity {
     900000 milliseconds is 15 minutes. */
     private static final long START_TIME = 900000;
 
-    private TextView mCountDown;
+    private TextView mCountDownTextView;
     private Button mStartPauseButton;
     private Button mCompleteButton;
     private Button mCancelButton;
@@ -32,16 +31,12 @@ public class WorryTimeActivity extends AppCompatActivity {
 
     private long mTimeLeft = START_TIME;
 
-    private DigitalClockView mDigitalClockView;
-
-    private Handler mHandler;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worry_time);
 
-        mCountDown = findViewById(R.id.clockText);
+        mCountDownTextView = findViewById(R.id.clockText);
         mStartPauseButton = findViewById(R.id.begin_time_button);
         mResetButton = findViewById(R.id.reset_time_button);
 
@@ -89,15 +84,10 @@ public class WorryTimeActivity extends AppCompatActivity {
             }
         });
 
-        mDigitalClockView = new DigitalClockView();
-
-        mHandler = new Handler();
-
-
+        /*When the view is created, the timer will display
+        15:00 rather than 00:00*/
+        updateCountDown();
     }
-
-
-
 
     public void returnToHome() {
         Intent intent = new Intent (this, MainActivity.class);
@@ -115,15 +105,21 @@ public class WorryTimeActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-
+                mTimerRunning = false;
+                mStartPauseButton.setText("Start");
+                mStartPauseButton.setVisibility(View.INVISIBLE);
+                mResetButton.setVisibility(View.VISIBLE);
+                mCompleteButton.setEnabled(true);
             }
         }.start();
 
         //Now the timer is running
         mTimerRunning = true;
+
         /*Now that the timer has begun, the start button changes to pause so the user
         is aware they can stop the countdown if needed*/
         mStartPauseButton.setText("Pause");
+
         //The user may not reset the time if needed once the timer begins
         mResetButton.setVisibility(View.INVISIBLE);
     }
@@ -137,7 +133,10 @@ public class WorryTimeActivity extends AppCompatActivity {
     }
 
     private void resetTimer(){
-
+        mTimeLeft = START_TIME;
+        updateCountDown();
+        mResetButton.setVisibility(View.INVISIBLE);
+        mStartPauseButton.setVisibility(View.VISIBLE);
 
     }
 
@@ -149,6 +148,6 @@ public class WorryTimeActivity extends AppCompatActivity {
 
         String timeFormat = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
 
-        mCountDown.setText(timeFormat);
+        mCountDownTextView.setText(timeFormat);
     }
 }
