@@ -1,6 +1,7 @@
 package will.example.myworrytime;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,7 +23,9 @@ import java.util.ArrayList;
         //Non-public/static field names start with m. They are a member
         private ListView mListView;
         private EditText mEditText;
-        private Button mButton;
+        private Button mAddWorryButton;
+        private Button mSetupButton;
+        private Button mHomeButton;
 
         private ArrayList<String> mArrayList;
         private ArrayAdapter<String> mAdapter;
@@ -33,14 +36,24 @@ import java.util.ArrayList;
             setContentView(R.layout.worry_list);
 
             mEditText = findViewById(R.id.edit_worry);
-            mButton = findViewById(R.id.add_worry_button);
+            mAddWorryButton = findViewById(R.id.add_worry_button);
+            mSetupButton = findViewById(R.id.setup_time_button);
+
+            mHomeButton = findViewById(R.id.home_button);
+            mHomeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    returnToHome();
+                }
+            });
+
             mListView = findViewById(R.id.worries_list_view);
 
             mArrayList = WorryListHelper.readData(this);
             mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mArrayList);
             mListView.setAdapter(mAdapter);
 
-            mButton.setOnClickListener(this);
+            mAddWorryButton.setOnClickListener(this);
             mListView.setOnItemClickListener(this);
         }
 
@@ -97,5 +110,10 @@ import java.util.ArrayList;
                         }
                     }).setNegativeButton("No", null);
 
+        }
+
+        public void returnToHome(){
+            Intent intent = new Intent (this, MainActivity.class);
+            startActivity(intent);
         }
     }

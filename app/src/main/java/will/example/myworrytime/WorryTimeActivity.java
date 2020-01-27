@@ -17,7 +17,7 @@ public class WorryTimeActivity extends AppCompatActivity {
 
     /*The start time is measured in milliseconds.
     900000 milliseconds is 15 minutes. */
-    private static final long START_TIME = 900000;
+    private static final long START_TIME = 9000;
 
     private TextView mCountDownTextView;
     private Button mStartPauseButton;
@@ -81,6 +81,13 @@ public class WorryTimeActivity extends AppCompatActivity {
                 if (mTimerRunning){
                     resetTimer();
                 }
+            }
+        });
+
+        mCompleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                returnToHome();
             }
         });
 

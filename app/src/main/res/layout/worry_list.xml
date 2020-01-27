@@ -31,7 +31,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ListView
@@ -44,11 +44,27 @@
 
         </ListView>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
         <Button
-            android:id="@+id/setup_button"
-            android:layout_width="wrap_content"
+            android:id="@+id/home_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Return to Home" />
+
+        <Button
+            android:id="@+id/setup_time_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Setup Worry Time" />
+
     </LinearLayout>
 
 </LinearLayout>
