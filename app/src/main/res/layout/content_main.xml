@@ -7,7 +7,6 @@
     android:background ="@color/pale_blue"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity">
-    <!-- tools:showIn="@layout/activity_main" -->
 
     <ImageView
         android:id="@+id/imageView"
@@ -19,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/clock_face" />
+        app:srcCompat="@drawable/clock_face"
+        android:contentDescription="@string/app_logo"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,7 +27,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="16dp"
-        android:text="What is on your mind right now"
+        android:text="@string/homescreen_message"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/launch_list_button"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:text="Current Worries"
+        android:text="@string/current_worries"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="59dp"
-        android:text="Start WorryTime"
+        android:text="@string/start_worrytime"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

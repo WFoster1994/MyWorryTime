@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/clock_face"
-        android:contentDescription="@string/timer_description" />
+        android:contentDescription="@string/app_logo"/>
 
     <TextView
         android:id="@+id/count_down_text"
@@ -30,7 +30,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.574" />
+        app:layout_constraintVertical_bias="0.574"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/start_pause_button"

@@ -16,7 +16,7 @@
 
         <EditText
             android:id="@+id/edit_worry"
-            android:hint="What's on your mind"
+            android:hint="@string/add_worry_hint"
             android:layout_width="0dp"
             android:layout_weight="4"
             android:layout_height="wrap_content" />
@@ -26,7 +26,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Add"/>
+            android:text="@string/add"/>
     </LinearLayout>
 
     <LinearLayout
@@ -56,14 +56,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Return to Home" />
+            android:text="@string/return_to_home" />
 
         <Button
             android:id="@+id/setup_time_button"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Setup Worry Time" />
+            android:text="@string/setup_worry_time" />
 
     </LinearLayout>
 

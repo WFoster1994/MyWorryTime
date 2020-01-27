@@ -8,4 +8,13 @@
     <string name="begin">Begin</string>
     <string name="reset_time">Reset Time</string>
     <string name="timer_description">Countdown timer for worry time.</string>
+    <string name="homescreen_message">What is worrying you right now</string>
+    <string name="current_worries">Current Worries</string>
+    <string name="start_worrytime">Start WorryTime</string>
+    <string name="add_worry_hint">What\'s on your mind right now</string>
+    <string name="add">Add</string>
+    <string name="return_to_home">Return to Home</string>
+    <string name="setup_worry_time">Setup Worry Time</string>
+    <string name="worry_title">Worry Title</string>
+    <string name="app_logo">App Logo</string>
 </resources>
