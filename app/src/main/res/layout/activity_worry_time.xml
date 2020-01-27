@@ -7,29 +7,56 @@
     android:background ="@color/pale_blue"
     tools:context=".WorryTimeActivity">
 
+    <ImageView
+        android:id="@+id/logoView"
+        android:layout_width="50dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clock_face"
+        android:contentDescription="@string/timer_description" />
+
     <TextView
+        android:id="@+id/clockText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/timer"
-        android:id="@+id/clockText"
         android:textSize="75sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/begin_time_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.574" />
 
     <Button
         android:id="@+id/begin_time_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Begin"
+        android:text="@string/begin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.591" />
+
+    <Button
+        android:id="@+id/reset_time_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_time"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/begin_time_button"
+        app:layout_constraintVertical_bias="0.142" />
 
     <Button
         android:id="@+id/cancel_time_button"
@@ -49,9 +76,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="72dp"
         android:layout_marginRight="72dp"
-        android:text="Complete"
+        android:text="@string/complete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.874" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

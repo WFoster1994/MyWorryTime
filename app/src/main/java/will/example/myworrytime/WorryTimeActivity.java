@@ -3,36 +3,54 @@ package will.example.myworrytime;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Locale;
+
 public class WorryTimeActivity extends AppCompatActivity {
 
-    private Thread animationThread;
-    private ClockView mClockView;
+    /*The start time is measured in milliseconds.
+    900000 milliseconds is 15 minutes. */
+    private static final long START_TIME = 900000;
+
+    private TextView mCountDown;
+    private Button mStartPauseButton;
+    private Button mCompleteButton;
+    private Button mCancelButton;
+    private Button mResetButton;
+
+    private CountDownTimer mCountDownTimer;
+
+    private Boolean mTimerRunning;
+
+    private long mTimeLeft = START_TIME;
+
+    private DigitalClockView mDigitalClockView;
+
+    private Handler mHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_worry_time);
 
-        Button startButton = findViewById(R.id.begin_time_button);
-        startButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startClockView();
-            }
-        });
+        mCountDown = findViewById(R.id.clockText);
+        mStartPauseButton = findViewById(R.id.begin_time_button);
+        mResetButton = findViewById(R.id.reset_time_button);
 
-        Button completeButton = findViewById(R.id.complete_time_button);
+        mCompleteButton = findViewById(R.id.complete_time_button);
         //Ensure that the user cannot complete immediately.
-        completeButton.setEnabled(false);
+        mCompleteButton.setEnabled(false);
+        mCancelButton = findViewById(R.id.cancel_time_button);
 
-        Button cancelButton = findViewById(R.id.cancel_time_button);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -51,16 +69,86 @@ public class WorryTimeActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        mStartPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTimerRunning) {
+                    pauseTimer();
+                } else
+                    startTimer();
+            }
+        });
+
+        mResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mTimerRunning){
+                    resetTimer();
+                }
+            }
+        });
+
+        mDigitalClockView = new DigitalClockView();
+
+        mHandler = new Handler();
+
+
     }
 
 
-    public void startClockView() {
-        Intent intent = new Intent(this, ClockView.class);
-        startActivity(intent);
-    }
+
 
     public void returnToHome() {
         Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private void startTimer() {
+        //The timer will count down from 15 minutes and the interval will be every second
+        mCountDownTimer = new CountDownTimer(mTimeLeft, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeft = mTimeLeft;
+                updateCountDown();
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
+
+        //Now the timer is running
+        mTimerRunning = true;
+        /*Now that the timer has begun, the start button changes to pause so the user
+        is aware they can stop the countdown if needed*/
+        mStartPauseButton.setText("Pause");
+        //The user may not reset the time if needed once the timer begins
+        mResetButton.setVisibility(View.INVISIBLE);
+    }
+
+    private void pauseTimer(){
+        mCountDownTimer.cancel();
+        mTimerRunning = false;
+        mStartPauseButton.setText("Begin");
+        //Now that the timer is paused, the user may reset the time if needed
+        mResetButton.setVisibility(View.VISIBLE);
+    }
+
+    private void resetTimer(){
+
+
+    }
+
+    private void updateCountDown(){
+        //This will turn the milliseconds into seconds and then into minutes
+        int minutes = (int) (mTimeLeft / 1000) / 60;
+        //Modus will return what remains after dividing by sixty.
+        int seconds = (int) (mTimeLeft / 1000) % 60;
+
+        String timeFormat = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
+
+        mCountDown.setText(timeFormat);
     }
 }
