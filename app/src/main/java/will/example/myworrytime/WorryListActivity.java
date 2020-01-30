@@ -99,16 +99,16 @@ import java.util.ArrayList;
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(WorryListActivity.this);
-            builder.setMessage("Would you like to remove this worry?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+            //AlertDialog.Builder builder = new AlertDialog.Builder(WorryListActivity.this);
+          //  builder.setMessage("Would you like to remove this worry?")
+                   // .etPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        //@Override
+                        //public void onClick(DialogInterface dialog, int which) {
                             mArrayList.remove(position);
                             mAdapter.notifyDataSetChanged();
-                            //Toast.makeText(this, "Worry Removed", Toast.LENGTH_SHORT).show();
-                        }
-                    }).setNegativeButton("No", null);
+                            Toast.makeText(this, "Worry Removed", Toast.LENGTH_SHORT).show();
+                        //}
+                   // }).setNegativeButton("No", null);
 
         }
 

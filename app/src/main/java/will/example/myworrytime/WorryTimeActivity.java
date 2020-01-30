@@ -150,7 +150,7 @@ public class WorryTimeActivity extends AppCompatActivity {
     private void updateCountDown(){
         //This will turn the milliseconds into seconds and then into minutes
         int minutes = (int) (mTimeLeft / 1000) / 60;
-        //Modus will return what remains after dividing by sixty.
+        //Modulus operator will return what remains after dividing 1000 by 60.
         int seconds = (int) (mTimeLeft / 1000) % 60;
 
         String timeFormat = String.format(Locale.getDefault(),"%02d:%02d", minutes, seconds);
